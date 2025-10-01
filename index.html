@@ -7,16 +7,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #3498db;
-      --primary-dark: #2980b9;
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
       --secondary: #06b6d4;
-      --dark: #2d3436;
-      --darker: #1e2224;
-      --light: #dfe6e9;
-      --gray: #b2bec3;
+      --dark: #0f1419;
+      --darker: #0a0a0a;
+      --light: #b8b8b8;
+      --gray: #888888;
       --danger: #d63031;
       --warning: #fdcb6e;
-      --code-bg: #2d3436;
+      --code-bg: #0f1419;
       --border-radius: 10px;
       --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       --transition: all 0.3s ease;
@@ -50,10 +50,12 @@
       margin: 0;
       min-height: 100vh;
       transition: var(--transition);
+      display: flex;
+      flex-direction: column;
     }
 
     .container {
-      max-width: 1200px;
+      /*max-width: 1200px;*/
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -61,7 +63,7 @@
     header {
       background: linear-gradient(to right, var(--primary), var(--primary-dark));
       color: white;
-      padding: 2rem 0;
+      padding: 1rem 0;
       text-align: center;
       box-shadow: var(--box-shadow);
       position: relative;
@@ -82,6 +84,14 @@
       font-size: 3rem;
       margin-bottom: 0.5rem;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .rio-icon {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0px auto 0px;
+      display: block;
     }
 
     .subtitle {
@@ -116,9 +126,9 @@
       background-color: var(--dark);
       box-shadow: var(--box-shadow);
       overflow: hidden;
-      min-height: calc(100vh - 300px);
       transition: var(--transition);
-      padding: 50px 0;
+      padding: 20px 0;
+      flex: 1;
     }
 
     .content-section {
@@ -133,34 +143,36 @@
     }
 
     h2 {
-      color: var(--primary);
+      color: var(--secondary);
       margin-bottom: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      border-bottom: 2px solid var(--primary);
+      border-bottom: 2px solid var(--secondary);
       padding-bottom: 5px;
     }
 
     .plugins-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: 1fr;
       gap: 20px;
       margin-top: 2rem;
     }
 
     .plugin-card {
       background-color: rgba(0, 0, 0, 0.2);
-      border-left: 4px solid var(--primary);
+      border-left: 4px solid var(--secondary);
       padding: 30px;
-      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      margin: 0 -30px;
+      border-radius: 0;
       transition: var(--transition);
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      text-align: center;
+      text-align: left;
       position: relative;
+      gap: 20px;
     }
 
     .plugin-card::before {
@@ -182,10 +194,9 @@
     .plugin-title {
       font-size: 1.8rem;
       color: var(--secondary);
-      margin-bottom: 1rem;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 10px;
     }
 
@@ -200,15 +211,36 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
+    .plugin-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      align-self: center;
+    }
+
+    .plugin-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .plugin-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
     .plugin-description {
-      margin-bottom: 1.5rem;
       color: var(--light);
     }
 
     .plugin-buttons {
       display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
       justify-content: center;
     }
 
@@ -253,6 +285,7 @@
       background-color: var(--darker);
       border-radius: var(--border-radius);
       transition: var(--transition);
+      margin-top: auto;
     }
 
     footer p {
@@ -265,6 +298,10 @@
 
     footer .container {
       padding: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .logo {
@@ -295,6 +332,11 @@
         grid-template-columns: 1fr;
       }
 
+      .plugin-card {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
       .plugin-buttons {
         flex-direction: column;
         align-items: center;
@@ -316,6 +358,7 @@
       <i class="fas fa-moon"></i>
     </button>
 
+    <img src="https://media.discordapp.net/attachments/976419905073184809/1422738996773126164/output-onlinepngtools1.png?ex=68ddc472&is=68dc72f2&hm=f02282960dfdb8fc9abc6000864281e6974f1ce9ba550d897f6bdf672dc64b9e&=&format=webp&quality=lossless&width=960&height=960" alt="RIO Icon" class="rio-icon">
     <h1>RIO Plugins</h1>
     <p class="subtitle">Powerful plugins for ARK: Survival Ascended</p>
   </header>
@@ -326,13 +369,18 @@
         <h2><i class="fas fa-plug"></i> Available Plugins</h2>
         <div class="plugins-list">
           <div class="plugin-card">
-            <div class="plugin-title">AntiPVEGriefing <span class="free-badge">Free</span></div>
-            <p class="plugin-description">The ultimate protection plugin for PvE servers. Prevents griefing, protects structures, items, and dinos from unauthorized access.</p>
+            <img src="https://media.discordapp.net/attachments/976419905073184809/1422755598910357514/output-onlinepngtools3.png?ex=68ddd3e8&is=68dc8268&hm=39dd92e109db307c310a60cc65e914a1f5ddd6f83b66a3900f8abe75ee8d73ef&=&format=webp&quality=lossless&width=960&height=960" alt="Plugin Image" class="plugin-image">
+            <div class="plugin-content">
+              <div class="plugin-text">
+                <div class="plugin-title">AntiPVEGriefing <span class="free-badge">Free</span></div>
+                <p class="plugin-description">Are your players tired of their property being damaged, their eggs stolen, or their gameplay simply ruined by others on your server? The Anti PvE Griefing plugin is the perfect solution. It protects your players from the most common forms of griefing on PvE servers.</p>
+              </div>
+            </div>
             <div class="plugin-buttons">
               <a href="https://github.com/RIO-Alex/Rio_AntiPveGriefing/releases/latest" class="btn primary" target="_blank">
                 <i class="fas fa-download"></i> Download Latest Version
               </a>
-              <a href="https://rioplugins.ru/APG_Documentations.html" class="btn" target="_blank">
+              <a href="https://rioplugins.ru/APG_Documentations.html" class="btn">
                 <i class="fas fa-book"></i> Documentation
               </a>
             </div>
