@@ -340,7 +340,7 @@
               </div>
             </div>
             <div class="plugin-buttons">
-              <a href="https://github.com/RIO-Alex/Rio_AntiPveGriefing/releases/latest" class="btn primary" target="_blank">
+              <a id="download-link" href="#" class="btn primary" target="_blank">
                 <i class="fas fa-download"></i> Download Latest Version
               </a>
               <a href="https://rioplugins.ru/APG_Documentations.html" class="btn">
@@ -361,5 +361,26 @@
     </div>
   </footer>
 
+  <script>
+    // Fetch download URL
+    async function setDownloadLink() {
+      const repo = 'RIO-Alex/AntiPveGriefing_Release';
+      const url = `https://api.github.com/repos/${repo}/releases/latest`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Fetch failed');
+        const data = await response.json();
+        const downloadUrl = data.assets && data.assets[0] ? data.assets[0].browser_download_url : '#';
+        const link = document.getElementById('download-link');
+        if (link) {
+          link.href = downloadUrl;
+        }
+      } catch (error) {
+        console.error('Error fetching download URL:', error);
+      }
+    }
+
+    setDownloadLink();
+  </script>
 </body>
 </html>
