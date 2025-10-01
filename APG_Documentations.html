@@ -22,18 +22,6 @@
       --transition: all 0.3s ease;
     }
 
-    .light-theme {
-      --primary: #3498db;
-      --primary-dark: #2980b9;
-      --secondary: #2ecc71;
-      --dark: #f8f9fa;
-      --darker: #ecf0f1;
-      --light: #2c3e50;
-      --gray: #7f8c8d;
-      --danger: #e74c3c;
-      --warning: #f39c12;
-      --code-bg: #f8f9fa;
-    }
 
     * {
       margin: 0;
@@ -202,28 +190,11 @@
       border: none;
     }
 
-    .theme-toggle {
-      position: absolute;
-      top: 15px;
-      left: 20px;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      transition: var(--transition);
-    }
 
     .home-btn {
       position: absolute;
       top: 15px;
-      left: 60px;
+      left: 20px;
       background: rgba(255, 255, 255, 0.2);
       color: white;
       width: 40px;
@@ -239,29 +210,6 @@
 
     .home-btn:hover {
       transform: scale(1.1);
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .theme-toggle {
-      position: absolute;
-      top: 15px;
-      left: 20px;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      transition: var(--transition);
-    }
-
-    .theme-toggle:hover {
-      transform: rotate(30deg);
       background: rgba(255, 255, 255, 0.3);
     }
 
@@ -695,9 +643,6 @@
     <a href="https://rioplugins.ru/" class="home-btn" title="Home">
       <i class="fas fa-home"></i>
     </a>
-    <button class="theme-toggle" title="Toggle theme">
-      <i class="fas fa-moon"></i>
-    </button>
     
     <h1>AntiPVEGriefing (APG)</h1>
     <span class="version-badge">Installed version: undefined</span>
@@ -2655,26 +2600,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Theme toggle
-    (function initTheme() {
-      const saved = localStorage.getItem('apg_theme');
-      if (saved === 'light') {
-        document.body.classList.add('light-theme');
-      }
-      const btn = document.querySelector('.theme-toggle');
-      if (btn) {
-        btn.addEventListener('click', () => {
-          document.body.classList.toggle('light-theme');
-          const mode = document.body.classList.contains('light-theme') ? 'light' : 'dark';
-          localStorage.setItem('apg_theme', mode);
-          const icon = btn.querySelector('i');
-          if (icon) {
-            icon.classList.toggle('fa-moon', mode !== 'light');
-            icon.classList.toggle('fa-sun', mode === 'light');
-          }
-        });
-      }
-    })();
 
     // Back to top button
     const backToTopButton = document.querySelector('.back-to-top');

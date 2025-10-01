@@ -22,18 +22,6 @@
       --transition: all 0.3s ease;
     }
 
-    .light-theme {
-      --primary: #3498db;
-      --primary-dark: #2980b9;
-      --secondary: #2ecc71;
-      --dark: #f8f9fa;
-      --darker: #ecf0f1;
-      --light: #2c3e50;
-      --gray: #7f8c8d;
-      --danger: #e74c3c;
-      --warning: #f39c12;
-      --code-bg: #f8f9fa;
-    }
 
     * {
       margin: 0;
@@ -99,28 +87,6 @@
       margin-top: 10px;
     }
 
-    .theme-toggle {
-      position: absolute;
-      top: 15px;
-      left: 20px;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      transition: var(--transition);
-    }
-
-    .theme-toggle:hover {
-      transform: rotate(30deg);
-      background: rgba(255, 255, 255, 0.3);
-    }
 
     .content-container {
       background-color: var(--dark);
@@ -354,9 +320,6 @@
     <div class="author-badge">
       <i class="fas fa-code"></i> by RIO
     </div>
-    <button class="theme-toggle" title="Toggle theme">
-      <i class="fas fa-moon"></i>
-    </button>
 
     <img src="https://media.discordapp.net/attachments/976419905073184809/1422738996773126164/output-onlinepngtools1.png?ex=68ddc472&is=68dc72f2&hm=f02282960dfdb8fc9abc6000864281e6974f1ce9ba550d897f6bdf672dc64b9e&=&format=webp&quality=lossless&width=960&height=960" alt="RIO Icon" class="rio-icon">
     <h1>RIO Plugins</h1>
@@ -398,27 +361,5 @@
     </div>
   </footer>
 
-  <script>
-    // Theme toggle
-    (function initTheme() {
-      const saved = localStorage.getItem('rio_plugins_theme');
-      if (saved === 'light') {
-        document.body.classList.add('light-theme');
-      }
-      const btn = document.querySelector('.theme-toggle');
-      if (btn) {
-        btn.addEventListener('click', () => {
-          document.body.classList.toggle('light-theme');
-          const mode = document.body.classList.contains('light-theme') ? 'light' : 'dark';
-          localStorage.setItem('rio_plugins_theme', mode);
-          const icon = btn.querySelector('i');
-          if (icon) {
-            icon.classList.toggle('fa-moon', mode !== 'light');
-            icon.classList.toggle('fa-sun', mode === 'light');
-          }
-        });
-      }
-    })();
-  </script>
 </body>
 </html>
