@@ -2676,7 +2676,7 @@
           return;
         }
 
-        if (latestVersion === localVersion) {
+        if (parseFloat(localVersion) >= parseFloat(latestVersion)) {
           statusDiv.innerHTML = '<div class="version-up-to-date">Latest version installed</div>';
         } else {
           statusDiv.innerHTML = `<div class="version-update-available">New version available: ${latestVersion}<a href="${downloadUrl}" class="download-btn" target="_blank">Download</a></div>`;
