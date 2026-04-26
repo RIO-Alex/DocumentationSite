@@ -752,6 +752,26 @@
         <div class="content-section" id="patch-notes">
           <h2><i class="fas fa-history"></i> Patch Notes</h2>
           <div class="config-block">
+            <h3>✨ Update 3.2</h3>
+            <ul>
+              <li>Fixed Telekinesis exploit (Lost Colony) - players can no longer pick up items or fertilized eggs belonging to other tribes using this skill.</li>
+              <li>Reworked cheat KillTarget logic - the command now completely destroys the body, and all inventory items are automatically dropped into an Item Cache.</li>
+              <li>Fixed Egg Destruction logic - fertilized eggs dropped by players will now be destroyed correctly if the Full Item Name is specified in the config.</li>
+              <li>Fixed PIN-code access - resolved an issue where players from other tribes could access PIN-locked structures even when disabled in the config.</li>
+              <li>Improved Offline Player Protection - protected players should no longer die from hunger or thirst while offline.</li>
+              <li>Updated cheat GetItemsBP [Mode] - added optional filtering (argument is optional, default is 0):<br>
+                0 - Show all items (Default).<br>
+                1 - Show items only (excluding cosmetics).<br>
+                2 - Show cosmetics only.
+              </li>
+              <li>New command: cheat GetAOEBP [RangeInFoundations] - displays blueprints of all dinos and structures within a radius of the player.<br>
+                The radius is measured in foundations.<br>
+                Argument is optional; if not specified, a default radius of 7 foundations is used.
+              </li>
+              <li>General code optimization and stability improvements.</li>
+            </ul>
+          </div>
+          <div class="config-block">
             <h3>✨ Update 3.1</h3>
             <ul>
               <li>The parameter name in config.json has been fixed - CheckUnlockStateAfterRestart. You need to open config.json and change the old name CheckUnlockStateAfterReatart to the new CheckUnlockStateAfterRestart.</li>
@@ -788,11 +808,15 @@
               Usage: <code>cheat GetTargetBP</code> [cite: 115]</p>
             </li>
             <li>**GetItemsBP**
-              <p>Description: Prints the blueprint paths of all items in the admin's inventory[cite: 115].<br>
-              Usage: <code>cheat GetItemsBP</code> [cite: 117]</p>
+              <p>Description: Prints blueprint paths of items in the admin's inventory with optional filtering mode (0 = all items, 1 = items only excluding cosmetics, 2 = cosmetics only; default is 0)[cite: 115].<br>
+              Usage: <code>cheat GetItemsBP [Mode]</code> [cite: 117]</p>
+            </li>
+            <li>**GetAOEBP**
+              <p>Description: Prints blueprints of all dinos and structures within a radius around the player. Radius is measured in foundations; argument is optional and defaults to 7[cite: 117].<br>
+              Usage: <code>cheat GetAOEBP [RangeInFoundations]</code> [cite: 118]</p>
             </li>
             <li>**KillTarget**
-              <p>Description: Kills the targeted player[cite: 117].<br>
+              <p>Description: Completely destroys the targeted player's body and automatically drops all inventory items into an Item Cache[cite: 117].<br>
               Usage: <code>cheat KillTarget</code> [cite: 118]</p>
             </li>
           </ul>
@@ -996,7 +1020,7 @@
             </div>
             <div class="config-item">
               <code>EggsTypeToDestroy</code> <span class="param-type array">array</span>
-              <p>A list of fertilized egg Blueprint paths (e.g., "Wyvern") that will be automatically destroyed[cite: 102].</p>
+              <p>A list of full fertilized egg item names (e.g., "Fertilized Deinonychus Egg") that will be automatically destroyed[cite: 102].</p>
             </div>
             <div class="config-item">
               <code>StructuresPreventingDestruction</code> <span class="param-type array">array</span>
@@ -1114,6 +1138,26 @@
         <div class="content-section" id="patch-notes_es">
           <h2><i class="fas fa-history"></i> Notas de Parche</h2>
           <div class="config-block">
+            <h3>✨ Actualización 3.2</h3>
+            <ul>
+              <li>Corregido exploit de Telequinesis (Lost Colony) - los jugadores ya no pueden recoger objetos ni huevos fertilizados de otras tribus usando esta habilidad.</li>
+              <li>Reestructurada la lógica de cheat KillTarget - el comando ahora destruye completamente el cuerpo, y todos los objetos del inventario se sueltan automáticamente en un Item Cache.</li>
+              <li>Corregida la lógica de Destrucción de Huevos - los huevos fertilizados soltados por jugadores ahora se destruirán correctamente si se especifica el Full Item Name en la configuración.</li>
+              <li>Corregido acceso por PIN-code - se resolvió un problema donde jugadores de otras tribus podían acceder a estructuras protegidas con PIN incluso cuando estaba deshabilitado en la configuración.</li>
+              <li>Mejorada la Protección de Jugadores Offline - los jugadores protegidos ya no deberían morir de hambre o sed mientras están desconectados.</li>
+              <li>Actualizado cheat GetItemsBP [Mode] - se añadió filtrado opcional (el argumento es opcional, valor por defecto 0):<br>
+                0 - Mostrar todos los objetos (Por defecto).<br>
+                1 - Mostrar solo objetos (excluyendo cosméticos).<br>
+                2 - Mostrar solo cosméticos.
+              </li>
+              <li>Nuevo comando: cheat GetAOEBP [RangeInFoundations] - muestra blueprints de todos los dinos y estructuras dentro de un radio del jugador.<br>
+                El radio se mide en foundations.<br>
+                El argumento es opcional; si no se especifica, se usa un radio por defecto de 7 foundations.
+              </li>
+              <li>Optimización general de código y mejoras de estabilidad.</li>
+            </ul>
+          </div>
+          <div class="config-block">
             <h3>✨ Actualización 3.1</h3>
             <ul>
               <li>El nombre del parámetro en config.json ha sido corregido - CheckUnlockStateAfterRestart. Debes abrir config.json y cambiar el nombre antiguo CheckUnlockStateAfterReatart al nuevo CheckUnlockStateAfterRestart.</li>
@@ -1150,11 +1194,15 @@
               Uso: <code>cheat GetTargetBP</code> [cite: 115]</p>
             </li>
             <li>**GetItemsBP**
-              <p>Descripción: Imprime las rutas Blueprint de todos los objetos en el inventario del administrador[cite: 115].<br>
-              Uso: <code>cheat GetItemsBP</code> [cite: 117]</p>
+              <p>Descripción: Imprime rutas Blueprint de objetos en el inventario del administrador con modo de filtrado opcional (0 = todos los objetos, 1 = solo objetos sin cosméticos, 2 = solo cosméticos; por defecto 0)[cite: 115].<br>
+              Uso: <code>cheat GetItemsBP [Mode]</code> [cite: 117]</p>
+            </li>
+            <li>**GetAOEBP**
+              <p>Descripción: Imprime blueprints de todos los dinos y estructuras dentro de un radio alrededor del jugador. El radio se mide en foundations; el argumento es opcional y por defecto es 7[cite: 117].<br>
+              Uso: <code>cheat GetAOEBP [RangeInFoundations]</code> [cite: 118]</p>
             </li>
             <li>**KillTarget**
-              <p>Descripción: Mata al jugador objetivo[cite: 117].<br>
+              <p>Descripción: Destruye completamente el cuerpo del jugador objetivo y suelta automáticamente todos los objetos del inventario en un Item Cache[cite: 117].<br>
               Uso: <code>cheat KillTarget</code> [cite: 118]</p>
             </li>
           </ul>
@@ -1358,7 +1406,7 @@
             </div>
             <div class="config-item">
               <code>EggsTypeToDestroy</code> <span class="param-type array">lista</span>
-              <p>Lista de rutas Blueprint de huevos fertilizados (ej. "Wyvern") que serán destruidos automáticamente[cite: 102].</p>
+              <p>Lista de nombres completos de ítems de huevos fertilizados (ej. "Fertilized Deinonychus Egg") que serán destruidos automáticamente[cite: 102].</p>
             </div>
             <div class="config-item">
               <code>StructuresPreventingDestruction</code> <span class="param-type array">lista</span>
@@ -1477,6 +1525,26 @@
         <div class="content-section" id="patch-notes_ru">
           <h2><i class="fas fa-history"></i> Список изменений</h2>
           <div class="config-block">
+            <h3>✨ Обновление 3.2</h3>
+            <ul>
+              <li>Исправлен эксплойт Telekinesis (Lost Colony) - игроки больше не могут подбирать предметы или оплодотворённые яйца других племён с помощью этого навыка.</li>
+              <li>Переработана логика cheat KillTarget - команда теперь полностью уничтожает тело, а все предметы из инвентаря автоматически выбрасываются в Item Cache.</li>
+              <li>Исправлена логика уничтожения яиц - оплодотворённые яйца, выброшенные игроками, теперь корректно уничтожаются, если в конфиге указан Full Item Name.</li>
+              <li>Исправлен доступ по PIN-коду - устранена проблема, из-за которой игроки из других племён могли получать доступ к PIN-защищённым структурам, даже если это отключено в конфиге.</li>
+              <li>Улучшена оффлайн-защита игроков - защищённые игроки больше не должны умирать от голода или жажды в оффлайне.</li>
+              <li>Обновлён cheat GetItemsBP [Mode] - добавлена опциональная фильтрация (аргумент необязательный, значение по умолчанию 0):<br>
+                0 - Показать все предметы (по умолчанию).<br>
+                1 - Показать только предметы (без косметики).<br>
+                2 - Показать только косметику.
+              </li>
+              <li>Новая команда: cheat GetAOEBP [RangeInFoundations] - показывает блюпринты всех динозавров и структур в радиусе от игрока.<br>
+                Радиус измеряется в foundations.<br>
+                Аргумент необязательный; если не указан, используется радиус по умолчанию 7 foundations.
+              </li>
+              <li>Общая оптимизация кода и улучшения стабильности.</li>
+            </ul>
+          </div>
+          <div class="config-block">
             <h3>✨ Обновление 3.1</h3>
             <ul>
               <li>Исправлено название параметра в config.json - CheckUnlockStateAfterRestart. Вам нужно открыть config.json и изменить старое название CheckUnlockStateAfterReatart на новое CheckUnlockStateAfterRestart.</li>
@@ -1514,11 +1582,15 @@
               Использование: <code>cheat GetTargetBP</code> [cite: 115]</p>
             </li>
             <li>**GetItemsBP**
-              <p>Описание: Выводит пути Blueprint всех предметов в вашем инвентаре[cite: 115].<br>
-              Использование: <code>cheat GetItemsBP</code> [cite: 117]</p>
+              <p>Описание: Выводит пути Blueprint предметов в инвентаре администратора с опциональным режимом фильтрации (0 = все предметы, 1 = только предметы без косметики, 2 = только косметика; по умолчанию 0)[cite: 115].<br>
+              Использование: <code>cheat GetItemsBP [Mode]</code> [cite: 117]</p>
+            </li>
+            <li>**GetAOEBP**
+              <p>Описание: Выводит блюпринты всех динозавров и структур в радиусе вокруг игрока. Радиус измеряется в foundations; аргумент необязательный и по умолчанию равен 7[cite: 117].<br>
+              Использование: <code>cheat GetAOEBP [RangeInFoundations]</code> [cite: 118]</p>
             </li>
             <li>**KillTarget**
-              <p>Описание: Убивает игрока, на которого вы смотрите[cite: 117].<br>
+              <p>Описание: Полностью уничтожает тело выбранного игрока и автоматически сбрасывает все предметы инвентаря в Item Cache[cite: 117].<br>
               Использование: <code>cheat KillTarget</code> [cite: 118]</p>
             </li>
           </ul>
@@ -1722,7 +1794,7 @@
             </div>
             <div class="config-item">
               <code>EggsTypeToDestroy</code> <span class="param-type array">массив</span>
-              <p>Список оплодотворенных яиц (например, "Wyvern"), которые будут автоматически уничтожены[cite: 102].</p>
+              <p>Список полных названий предметов оплодотворённых яиц (например, "Fertilized Deinonychus Egg"), которые будут автоматически уничтожены[cite: 102].</p>
             </div>
             <div class="config-item">
               <code>StructuresPreventingDestruction</code> <span class="param-type array">массив</span>
@@ -1841,6 +1913,26 @@
         <div class="content-section" id="patch-notes_zh">
           <h2><i class="fas fa-history"></i> 补丁说明</h2>
           <div class="config-block">
+            <h3>✨ 更新 3.2</h3>
+            <ul>
+              <li>修复了 Telekinesis 漏洞（Lost Colony）- 玩家无法再使用该技能拾取其他部落的物品或受精蛋。</li>
+              <li>重做了 cheat KillTarget 逻辑 - 该命令现在会完全销毁尸体，所有背包物品会自动掉落到 Item Cache 中。</li>
+              <li>修复了 Egg Destruction 逻辑 - 玩家丢弃的受精蛋在配置中指定 Full Item Name 时，现在会被正确销毁。</li>
+              <li>修复了 PIN-code 访问 - 解决了一个问题：即使配置中禁用，其他部落玩家仍可访问带 PIN 锁的结构。</li>
+              <li>改进了离线玩家保护 - 受保护玩家离线时不应再因饥饿或口渴死亡。</li>
+              <li>更新了 cheat GetItemsBP [Mode] - 新增可选过滤（参数可选，默认值为 0）：<br>
+                0 - 显示所有物品（默认）。<br>
+                1 - 仅显示物品（不含外观）。<br>
+                2 - 仅显示外观。
+              </li>
+              <li>新命令：cheat GetAOEBP [RangeInFoundations] - 显示玩家半径范围内所有恐龙和建筑的蓝图。<br>
+                半径单位为 foundations。<br>
+                参数可选；若未指定，默认半径为 7 foundations。
+              </li>
+              <li>总体代码优化与稳定性改进。</li>
+            </ul>
+          </div>
+          <div class="config-block">
             <h3>✨ 更新 3.1</h3>
             <ul>
               <li>config.json 中的参数名称已修复 - CheckUnlockStateAfterRestart。您需要打开 config.json 并将旧名称 CheckUnlockStateAfterReatart 更改为新名称 CheckUnlockStateAfterRestart。</li>
@@ -1878,11 +1970,15 @@
               用法: <code>cheat GetTargetBP</code> [cite: 115]</p>
             </li>
             <li>**GetItemsBP**
-              <p>描述: 打印管理员背包中所有物品的蓝图路径 [cite: 115]。<br>
-              用法: <code>cheat GetItemsBP</code> [cite: 117]</p>
+              <p>描述: 打印管理员背包中物品的蓝图路径，并支持可选过滤模式（0 = 所有物品，1 = 仅物品不含外观，2 = 仅外观；默认值为 0） [cite: 115]。<br>
+              用法: <code>cheat GetItemsBP [Mode]</code> [cite: 117]</p>
+            </li>
+            <li>**GetAOEBP**
+              <p>描述: 打印玩家周围半径范围内所有恐龙和建筑的蓝图。半径单位为 foundations；参数可选，默认值为 7 [cite: 117]。<br>
+              用法: <code>cheat GetAOEBP [RangeInFoundations]</code> [cite: 118]</p>
             </li>
             <li>**KillTarget**
-              <p>描述: 击杀目标玩家 [cite: 117]。<br>
+              <p>描述: 完全销毁目标玩家尸体，并将其所有背包物品自动掉落到 Item Cache [cite: 117]。<br>
               用法: <code>cheat KillTarget</code> [cite: 118]</p>
             </li>
           </ul>
@@ -2086,7 +2182,7 @@
             </div>
             <div class="config-item">
               <code>EggsTypeToDestroy</code> <span class="param-type array">数组</span>
-              <p>将被自动销毁的受精蛋蓝图路径列表（例如，"Wyvern"） [cite: 102]。</p>
+              <p>将被自动销毁的受精蛋完整物品名称列表（例如，"Fertilized Deinonychus Egg"） [cite: 102]。</p>
             </div>
             <div class="config-item">
               <code>StructuresPreventingDestruction</code> <span class="param-type array">数组</span>
@@ -2205,6 +2301,26 @@
         <div class="content-section" id="patch-notes_de">
           <h2><i class="fas fa-history"></i> Patch-Notizen</h2>
           <div class="config-block">
+            <h3>✨ Update 3.2</h3>
+            <ul>
+              <li>Telekinesis-Exploit (Lost Colony) behoben - Spieler können mit dieser Fähigkeit keine Gegenstände oder befruchteten Eier anderer Tribes mehr aufheben.</li>
+              <li>Logik von cheat KillTarget überarbeitet - der Befehl zerstört den Körper jetzt vollständig, und alle Inventargegenstände werden automatisch in einen Item Cache gedroppt.</li>
+              <li>Logik zur Zerstörung von Eiern behoben - von Spielern gedroppte befruchtete Eier werden jetzt korrekt zerstört, wenn der Full Item Name in der Konfiguration angegeben ist.</li>
+              <li>PIN-Code-Zugriff behoben - ein Problem wurde gelöst, bei dem Spieler anderer Tribes auf PIN-geschützte Strukturen zugreifen konnten, selbst wenn dies in der Konfiguration deaktiviert war.</li>
+              <li>Offline-Spielerschutz verbessert - geschützte Spieler sollten offline nicht mehr an Hunger oder Durst sterben.</li>
+              <li>cheat GetItemsBP [Mode] aktualisiert - optionale Filterung hinzugefügt (Argument ist optional, Standardwert ist 0):<br>
+                0 - Alle Items anzeigen (Standard).<br>
+                1 - Nur Items anzeigen (ohne Kosmetika).<br>
+                2 - Nur Kosmetika anzeigen.
+              </li>
+              <li>Neuer Befehl: cheat GetAOEBP [RangeInFoundations] - zeigt Blueprints aller Dinos und Strukturen in einem Radius um den Spieler an.<br>
+                Der Radius wird in foundations gemessen.<br>
+                Das Argument ist optional; wenn es nicht angegeben ist, wird ein Standardradius von 7 foundations verwendet.
+              </li>
+              <li>Allgemeine Code-Optimierung und Stabilitätsverbesserungen.</li>
+            </ul>
+          </div>
+          <div class="config-block">
             <h3>✨ Update 3.1</h3>
             <ul>
               <li>Der Parametername in config.json wurde korrigiert - CheckUnlockStateAfterRestart. Sie müssen config.json öffnen und den alten Namen CheckUnlockStateAfterReatart in den neuen CheckUnlockStateAfterRestart ändern.</li>
@@ -2242,11 +2358,15 @@
               Verwendung: <code>cheat GetTargetBP</code> [cite: 115]</p>
             </li>
             <li>**GetItemsBP**
-              <p>Beschreibung: Gibt die Blueprint-Pfade aller Gegenstände im Inventar des Administrators aus[cite: 115].<br>
-              Verwendung: <code>cheat GetItemsBP</code> [cite: 117]</p>
+              <p>Beschreibung: Gibt Blueprint-Pfade von Gegenständen im Inventar des Administrators mit optionalem Filtermodus aus (0 = alle Items, 1 = nur Items ohne Kosmetika, 2 = nur Kosmetika; Standard ist 0)[cite: 115].<br>
+              Verwendung: <code>cheat GetItemsBP [Mode]</code> [cite: 117]</p>
+            </li>
+            <li>**GetAOEBP**
+              <p>Beschreibung: Gibt Blueprints aller Dinos und Strukturen in einem Radius um den Spieler aus. Der Radius wird in foundations gemessen; das Argument ist optional und Standard ist 7[cite: 117].<br>
+              Verwendung: <code>cheat GetAOEBP [RangeInFoundations]</code> [cite: 118]</p>
             </li>
             <li>**KillTarget**
-              <p>Beschreibung: Tötet den anvisierten Spieler[cite: 117].<br>
+              <p>Beschreibung: Zerstört den Körper des anvisierten Spielers vollständig und droppt automatisch alle Inventargegenstände in einen Item Cache[cite: 117].<br>
               Verwendung: <code>cheat KillTarget</code> [cite: 118]</p>
             </li>
           </ul>
@@ -2450,7 +2570,7 @@
             </div>
             <div class="config-item">
               <code>EggsTypeToDestroy</code> <span class="param-type array">array</span>
-              <p>Eine Liste von befruchteten Eitypen (z. B. "Wyvern"), die automatisch zerstört werden[cite: 102].</p>
+              <p>Eine Liste vollständiger Item-Namen von befruchteten Eiern (z. B. "Fertilized Deinonychus Egg"), die automatisch zerstört werden[cite: 102].</p>
             </div>
             <div class="config-item">
               <code>StructuresPreventingDestruction</code> <span class="param-type array">array</span>
